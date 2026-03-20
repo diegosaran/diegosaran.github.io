@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shor Code Project | Diego Saran</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="avatar">🛡️</div>
+            <h1>Shor Code Quantum Error Correction</h1>
+            <p class="subtitle">9-qubit quantum error correction implementation</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Projects</a>
+
+        <div class="card">
+            <h2>About the Project</h2>
+            <p>The Shor code is the first quantum error correction code that protects against both bit-flip and phase-flip errors. It encodes 1 logical qubit into 9 physical qubits, using 3 blocks of 3 qubits each.</p>
+        </div>
+
+        <div class="card">
+            <h2>How It Works</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Encoding:</strong> 1 logical qubit → 9 physical qubits</li>
+                <li><strong>Error injection:</strong> X (bit-flip), Z (phase-flip), Y (both)</li>
+                <li><strong>Syndrome measurement:</strong> 2 bits for phase errors, 6 bits for bit-flip errors</li>
+                <li><strong>Correction:</strong> Automatic correction based on measured syndromes</li>
+                <li><strong>Decoding:</strong> Recovers the original logical state</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Technical Details</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Backend:</strong> FastAPI, Qiskit, Python 3.13</li>
+                <li><strong>Frontend:</strong> Next.js, React, TypeScript</li>
+                <li><strong>Deployment:</strong> Render (backend), Vercel (frontend)</li>
+                <li><strong>Circuit size:</strong> 93 operations</li>
+                <li><strong>Error types:</strong> X, Z, Y, none</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Test Results</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li>✅ X error (bit-flip) on qubit 0 → syndrome: 100000 → corrected</li>
+                <li>✅ Z error (phase-flip) on qubit 0 → syndrome: 10 → corrected</li>
+                <li>✅ Y error (both) on qubit 0 → both syndromes → corrected</li>
+                <li>✅ 100% correction rate in 1024 shots</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Live Demos</h2>
+            <div class="links">
+                <a href="https://quantum-shor-code-platform.vercel.app" target="_blank">🌐 Live Application →</a>
+                <a href="https://quantum-shor-code-platform.onrender.com/docs" target="_blank">📚 API Documentation →</a>
+                <a href="https://github.com/diegosaran/quantum-shor-code-platform" target="_blank" class="github-link">📁 Source Code →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>What I Learned</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li>Quantum error correction principles</li>
+                <li>Syndrome measurement and interpretation</li>
+                <li>Building production-ready APIs with FastAPI</li>
+                <li>Deploying full-stack applications</li>
+                <li>Qiskit circuit design</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Diego Saran</p>
+        </div>
+    </footer>
+</body>
+</html>
