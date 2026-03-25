@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grover Quantum Simulator</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Grover's Quantum Search Algorithm</h1>
+    
+    <div class="simulator">
+        <h2>Quantum DNA Search</h2>
+        <input type="text" id="searchItem" placeholder="DNA sequence to search">
+        <button onclick="searchGrover()">Search</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_URL = 'https://quantum-grover-platform.onrender.com';
+        
+        async function searchGrover() {
+            const searchItem = document.getElementById('searchItem').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = 'Searching with Grover...';
+            
+            try {
+                const response = await fetch(`${API_URL}/quantum/simulate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ search_item: searchItem })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
