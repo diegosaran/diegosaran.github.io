@@ -3,41 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grover Quantum Simulator</title>
+    <title>Grover's Algorithm | Diego Saran</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>Grover's Quantum Search Algorithm</h1>
-    
-    <div class="simulator">
-        <h2>Quantum DNA Search</h2>
-        <input type="text" id="searchItem" placeholder="DNA sequence to search">
-        <button onclick="searchGrover()">Search</button>
-        <div id="result"></div>
+    <header>
+        <div class="container">
+            <div class="avatar">🔍</div>
+            <h1>Grover's Quantum Search Algorithm</h1>
+            <p class="subtitle">Quadratic speedup for unstructured search: O(√N) vs O(N)</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Projects</a>
+
+        <div class="card">
+            <h2>About the Project</h2>
+            <p>Grover's algorithm provides a quadratic speedup for searching unsorted databases. This implementation searches for specific DNA sequences in a large DNA database, demonstrating quantum advantage over classical search.</p>
+        </div>
+
+        <div class="card">
+            <h2>How It Works</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Superposition:</strong> Creates equal probability for all N items</li>
+                <li><strong>Oracle:</strong> Marks target DNA sequences with a phase flip</li>
+                <li><strong>Diffusion:</strong> Amplifies amplitude of marked states</li>
+                <li><strong>Iterations:</strong> Optimal number = π/4 × √(N/M)</li>
+                <li><strong>Measurement:</strong> Collapses to target positions with high probability</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Technical Details</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Backend:</strong> FastAPI, Qiskit, Python 3.13</li>
+                <li><strong>Frontend:</strong> Next.js, React</li>
+                <li><strong>Deployment:</strong> Render (backend), Vercel (frontend)</li>
+                <li><strong>Complexity:</strong> O(√N) quantum vs O(N) classical</li>
+                <li><strong>DNA Database:</strong> Custom .txt file upload</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Test Results</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li>✅ 10 targets → 99.98% quantum success rate</li>
+                <li>✅ 20 targets → 52.61% quantum success rate</li>
+                <li>✅ 40 targets → 100% quantum success rate</li>
+                <li>✅ Quantum speedup: O(√N) vs O(N)</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Live Demos</h2>
+            <div class="links">
+                <a href="https://quantum-grover-platform.vercel.app" target="_blank">🌐 Live Application →</a>
+                <a href="https://quantum-grover-platform.onrender.com/docs" target="_blank">📚 API Documentation →</a>
+                <a href="https://github.com/diegosaran/quantum-grover-platform" target="_blank" class="github-link">📁 Source Code →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>What I Learned</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li>Grover's amplitude amplification principle</li>
+                <li>Quantum oracle construction for DNA matching</li>
+                <li>Optimal iteration calculation for multiple targets</li>
+                <li>Building production quantum APIs</li>
+                <li>Deploying full-stack quantum applications</li>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        const API_URL = 'https://quantum-grover-platform.onrender.com';
-        
-        async function searchGrover() {
-            const searchItem = document.getElementById('searchItem').value;
-            const resultDiv = document.getElementById('result');
-            
-            resultDiv.innerHTML = 'Searching with Grover...';
-            
-            try {
-                const response = await fetch(`${API_URL}/quantum/simulate`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ search_item: searchItem })
-                });
-                
-                const data = await response.json();
-                resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-            } catch (error) {
-                resultDiv.innerHTML = 'Error: ' + error.message;
-            }
-        }
-    </script>
+    <footer>
+        <div class="container">
+            <p>© 2025 Diego Saran</p>
+        </div>
+    </footer>
 </body>
 </html>
